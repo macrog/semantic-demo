@@ -9,6 +9,9 @@ before_script:
   npm install -g ionic cordova
 script:
   ionic build --prod --service-worker
+after_success: 
+  npm install -g travis-deploy-once
+  npm run semantic-release
 deploy:
   provider: pages
   skip-cleanup: true
