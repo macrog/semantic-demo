@@ -2,8 +2,7 @@ language: node_js
 node_js:
   10.0.0
 branches:
-  develop 
-  master
+  /.*/
 before_script:
   npm install -g ionic cordova
 script:
