@@ -3,7 +3,8 @@ branches: /.*/
 jobs: 
   include: 
     - 
-      stage: "prepare npm install -g ionic cordova"
+      stage: "prepare"
+      script: "npm install -g ionic cordova"
     - 
       script: "ionic build --prod --service-worker"
       stage: "build, test, lint"
