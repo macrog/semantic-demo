@@ -7,7 +7,7 @@ jobs:
       script: "yarn add global ionic cordova"
     - 
       # script: "ionic build --prod --service-worker"
-      script: "yarn run test"
+      script: "yarn run test:ci"
       stage: "build, test, lint"
     - 
       github-token: $GITHUB_TOKEN
