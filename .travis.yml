@@ -1,25 +1,24 @@
-language: node_js
-node_js:
-  10.0.0
-branches:
-  # builds all branches
-  /.*/
-jobs:
-  include:
-    - stage: prepare
-      npm install -g ionic cordova
-    - stage: build, test, lint
-      script:
-        ionic build --prod --service-worker
-    - stage: deploy
+--- 
+branches: /.*/
+jobs: 
+  include: 
+    - 
+      stage: "prepare npm install -g ionic cordova"
+    - 
+      script: "ionic build --prod --service-worker"
+      stage: "build, test, lint"
+    - 
+      github-token: $GITHUB_TOKEN
+      keep-history: true
+      local_dir: www
       provider: pages
       skip-cleanup: true
-      github-token: $GITHUB_TOKEN 
-      keep-history: true
-      on:
+      stage: deploy
+      true: 
         branch: master
-      local_dir: www
-    - stage: after
-      npm install -g travis-deploy-once
-      npm run semantic-release
+    - 
+      stage: "after npm install -g travis-deploy-once npm run semantic-release"
+language: node_js
+node_js: "10.0.0"
+
   
