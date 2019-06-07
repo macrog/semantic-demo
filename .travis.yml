@@ -6,12 +6,12 @@ branches:
   /.*/
 jobs:
   include:
-    stage: "Prepare"
+    - stage: prepare
       npm install -g ionic cordova
-    stage: "Build, test, lint"
+    - stage: build, test, lint
       script:
         ionic build --prod --service-worker
-    stage: "Deploy"
+    - stage: deploy
       provider: pages
       skip-cleanup: true
       github-token: $GITHUB_TOKEN 
@@ -19,7 +19,7 @@ jobs:
       on:
         branch: master
       local_dir: www
-    stage: "After"
+    - stage: after
       npm install -g travis-deploy-once
       npm run semantic-release
   
